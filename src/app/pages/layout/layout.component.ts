@@ -11,13 +11,17 @@ export class LayoutComponent {
   loggedUser: any;
   constructor(private router: Router) {
     const localUser = localStorage.getItem('loggedUser');
-    if(localUser != null) {
+    if (localUser != null) {
       this.loggedUser = JSON.parse(localUser);
     }
   }
 
   onLogoff() {
-    localStorage.removeItem('loggedUser');
-    this.router.navigateByUrl('/login')
-  }
+    const confirmLogout = confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+        localStorage.removeItem('loggedUser');
+        this.router.navigateByUrl('/login');
+    }
+}
+
 }

@@ -1,0 +1,78 @@
+nav {
+    padding: 20px;
+    color: #fff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 120px;
+    margin-left: 15px;
+
+}
+
+li {
+    margin: 20px 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 320;
+}
+
+a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.sidebar i {
+    margin-right: 30px;
+    /* Adjust the margin as needed */
+    font-size: 24px;
+    /* Adjust the font size as needed */
+    font-weight: 300;
+    /* Decrease the font weight to make the icons slimmer */
+}
+.active {
+    background-color: rgba(255, 255, 255, 0.1); /* Change to your desired background color */
+    border-radius: 4px; /* Adjust the border radius as needed */
+}
+
+
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    /* Align items vertically */
+    margin-bottom: 5px;
+    padding: 5px 12px;
+    /* Add space between each link */
+}
+.sidebar a:active,
+.sidebar a:focus {
+    background-color: rgba(255, 255, 255, 0.1); /* Change to your desired background color */
+}
+.sidebar a:visited {
+    background-color: white; /* Change to your desired background color */
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    margin-left: 3px;
+    /* Adjust the margin as needed */
+}
+
+.logo-text {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 450;
+    margin-left: 20px;
+    text-decoration: none; /* Remove underline */
+}

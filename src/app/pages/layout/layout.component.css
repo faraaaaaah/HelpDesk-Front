@@ -1,0 +1,64 @@
+.main-container {
+    display: flex;
+    height: 100vh;
+    background-color: #FBF3FF;
+}
+
+app-sidebar {
+    width: 250px;
+    /* Adjust the width of the sidebar as needed */
+    background-color: #512da8;
+}
+
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    position: relative;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #FDF9FE;
+    padding: 13px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #ededed;
+    /* Increase border thickness */
+}
+
+
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    /* Change to a contrasting color, like black */
+    font-size: 14px;
+    /* Increase the font size */
+    padding: 10px 20px;
+    /* Adjust padding for better spacing */
+    margin-left: 15px;
+    cursor: pointer;
+    z-index: 999;
+    /* Add a higher z-index */
+}
+
+
+.logout-btn i {
+    font-size: 1.5rem;
+    color: #fff;
+    /* Change to a contrasting color, like black */
+}
+
+
+
+.text-white {
+    color: #fff;
+}

@@ -27,6 +27,7 @@
     width: 768px;
     max-width: 100%;
     min-height: 480px;
+    
 }
 
 .container p{
@@ -45,6 +46,9 @@
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
+}
+.form-container h1 {
+    margin-bottom: 30px; /* Add some bottom margin to create space */
 }
 
 .container button{
@@ -215,4 +219,7 @@
 
 .container.active .toggle-right{
     transform: translateX(200%);
+}
+.text-danger{
+    font-size: 14px;
 }

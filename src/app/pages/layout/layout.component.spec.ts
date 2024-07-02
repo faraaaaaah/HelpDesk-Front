@@ -10,8 +10,8 @@ describe('LayoutComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LayoutComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,0 +1,104 @@
+<!--div-- class="parent">
+    <div class="container">
+        <h1>Ajouter utilisateurs</h1>
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" [(ngModel)]="adduserObj.name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" [(ngModel)]="adduserObj.lastname" name="lastname">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">email</label>
+                    <input type="email" id="email" [(ngModel)]="adduserObj.email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" [(ngModel)]="adduserObj.status" name="status">
+                        <option value="open">Open</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Ajouter</button>
+        </form>
+    </div>
+    <button class="go-back-btn" (click)="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="none" d="M0 0h24v24H0V0z" />
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+        </svg>
+    </button>
+</!--div-->
+<div class="parent">
+    <div class="container">
+      <h1>Add User</h1>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" formControlName="name" type="text" class="form-control" placeholder="Name" autocomplete="name">
+            <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-danger">
+              Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input id="lastname" formControlName="lastname" type="text" class="form-control" placeholder="Last name">
+            <div *ngIf="form.get('lastname')?.invalid && form.get('lastname')?.touched" class="text-danger">
+              Last Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" formControlName="email" class="form-control" placeholder="Email">
+            <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
+              <div *ngIf="form.get('email')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="form.get('email')?.errors?.['email']">Invalid email format.</div>
+              <div *ngIf="form.get('email')?.errors?.['emailExists']">Email already exists.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dob" class="form-label">Date of birth</label>
+            <input id="dob" formControlName="dob" type="date" class="form-control" placeholder="dob">
+            <div *ngIf="form.get('dob')?.errors?.['ageRequirement']" class="text-danger">
+              Minimum age required is {{ form.get('dob')?.errors?.['ageRequirement']?.requiredAge }} years.
+            </div>
+            <div *ngIf="form.get('dob')?.invalid && form.get('dob')?.touched" class="text-danger">
+              Date of Birth is required.
+            </div>
+          </div>
+          
+        </div>
+        <div class="form-row align-end">
+          <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <input id="password" type="password" formControlName="password" class="form-control" placeholder="Password">
+              <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-danger">
+                  <div *ngIf="form.get('password')?.errors?.['required']">Password is required.</div>
+                  <div *ngIf="form.get('password')?.errors?.['minlength']">Password must be at least {{ minLength }} characters long.</div>
+                  <div *ngIf="form.get('password')?.errors?.['passwordComplexity']">Password must contain both letters and characters.</div>
+              </div>
+          </div>
+          <div class="form-group submit-group">
+              <button [disabled]="!form.valid" class="btn btn-primary" type="submit" value="onSubmit()">Add</button>
+          </div>
+      </div>
+      </form>
+    </div>
+    <button class="go-back-btn" (click)="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="none" d="M0 0h24v24H0V0z" />
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+        </svg>
+    </button>
+  </div>
+  

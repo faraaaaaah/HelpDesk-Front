@@ -1,0 +1,58 @@
+<div class="parent">
+    <div class="container">
+      <h1>Update user</h1>
+      <form  [formGroup]="form" (ngSubmit)="onSubmit()" >
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" formControlName="name" type="text" class="form-control" placeholder="Name" autocomplete="name" >
+            <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-danger">
+              Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastname" class="form-label">Lastname</label>
+            <input id="lastname" formControlName="lastname" type="text" class="form-control" placeholder="Lastname">
+            <div *ngIf="form.get('lastname')?.invalid && form.get('lastname')?.touched" class="text-danger">
+              lastname is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" formControlName="email" class="form-control">
+            <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">
+              <div *ngIf="form.get('email')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="form.get('email')?.errors?.['email']">Invalid email format.</div>
+              <div *ngIf="form.get('email')?.errors?.['emailExists']">Email already exists.</div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="dob" class="form-label">Date of birth</label>
+            <input id="dob" type="date" formControlName="dob" class="form-control">
+            <div *ngIf="form.get('dob')?.errors?.['ageRequirement']" class="text-danger">
+              Minimum age required is 18 years.
+            </div>            
+            <div *ngIf="form.get('dob')?.invalid && form.get('dob')?.touched" class="text-danger">
+              Date of Birth is required.
+            </div>            
+          </div>
+    
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <button [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="onSubmit()">Update</button>
+              </div>
+        </div>
+      </form>
+    </div>
+    <button class="go-back-btn" (click)="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+      </svg>
+  </button>
+  </div>
+  

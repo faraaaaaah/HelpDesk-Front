@@ -1,0 +1,56 @@
+.card-container {
+    max-width: 97%; /* Adjust the max-width as needed */
+    margin-left: 15px; /* Align the card to the left */
+}
+
+.card {
+    width: 100%; /* Ensure the card takes the full width of its container */
+}
+
+.table {
+    font-size: 14px;
+}
+
+.table thead th {
+    padding: 14px;
+    font-weight: 400; /* Make the headers thinner */
+    color: grey; /* Change the text color to grey */
+}
+
+.table tbody td {
+    padding: 12px; /* Decrease the padding */
+}
+
+.main-content {
+    margin-top: 40px; /* Adjust the margin-top value to lower the card */
+}
+
+.header {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.title {
+    font-weight: 300;
+    margin-left: 5px;
+}
+.add-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    margin-right: 20px;
+    color: #007bff; /* Adjust the color as needed */
+    font-size: 26px;
+    text-decoration: none;
+}
+.action-cell {
+    text-align: right; 
+    
+}
+
+.action-icon {
+    cursor: pointer;
+    /*margin-left: 10px;*/
+    margin-right: 25px; /* Adjust the spacing between icons */
+    font-size: 1.1em;
+}

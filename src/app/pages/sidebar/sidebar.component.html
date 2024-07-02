@@ -1,0 +1,17 @@
+<nav class="sidebar">
+    <div class="logo">
+        <div class="logo-img">
+            <img src="assets/µ.png" alt="Logo">
+        </div>
+        <div class="logo-text">Help Desk</div>
+    </div>
+
+    <ul>
+        <li *ngFor="let navLinks of navLinks" [routerLinkActive]="['active']">
+            <a [routerLink]="navLinks.path">
+                <i class="bi {{ navLinks.icon }}"></i>
+                <span>{{ navLinks.title }}</span>
+            </a>
+        </li>
+    </ul>
+</nav>

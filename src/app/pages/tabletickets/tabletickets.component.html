@@ -1,0 +1,52 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-container">
+                    <div class="header">
+                        <h4 class="title">Tickets</h4>
+                        <a class="add-button" routerLink="/addticket">
+                            <i class="bi bi-plus"></i>
+                        </a>
+                    </div>
+                    <div class="content table-responsive table-full-width ">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Assigned to</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ticket of tickets">
+                                    <td>{{ticket.id}}</td>
+                                    <td>{{ticket.name}}</td>
+                                    <td>(ID:{{ticket.assigned.id}}) {{ticket.assigned.name}} {{ticket.assigned.lastname}}</td>
+                                    <td>{{ticket.date}}</td>
+                                    <td>{{ticket.status}}</td>
+                                    <td>
+                                        <a (click)="afficher(ticket)" class="text-primary"
+                                            style="cursor: pointer; margin-right: 25px; margin-left: 20px;">
+                                            <i class="bi bi-three-dots" style="font-size: 1.1em;"></i>
+                                        </a>
+                                        <a (click)="editRow(ticket)" class="text-primary"
+                                            style="cursor: pointer; margin-right: 25px; margin-left: 20px;">
+                                            <i class="bi bi-pencil-square" style="font-size: 1.1em;"></i>
+                                        </a>
+                                        <a (click)="deleteRow(ticket)" class="text-danger"
+                                            style="cursor: pointer; margin-right: 0px;">
+                                            <i class="bi bi-trash" style="font-size: 1.1em;"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

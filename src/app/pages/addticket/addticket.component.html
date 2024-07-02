@@ -1,0 +1,57 @@
+<div class="parent">
+  <div class="container">
+    <h1>Add ticket</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input id="name" formControlName="name" type="text" class="form-control" placeholder="Name" autocomplete="name">
+          <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="text-danger">
+            Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="assigned" class="form-label">Assigned To</label>
+          <select id="assigned" formControlName="assigned" class="form-control">
+            <option *ngFor="let user of users" [value]="user.id"> (ID: {{ user.id }}) {{ user.name }} {{ user.lastname }}</option>
+          </select>
+          <div *ngIf="form.get('assigned')?.invalid && form.get('assigned')?.touched" class="text-danger">
+            Assigned is required.
+          </div>
+        </div>
+        
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date" class="form-label">Date</label>
+          <input id="date" type="date" formControlName="date" class="form-control">
+          <div *ngIf="form.get('date')?.invalid && form.get('date')?.touched" class="text-danger">
+            Date is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="status" class="form-label">Status</label>
+          <select id="status" formControlName="status" class="form-control">
+            <option value="DRAFT">Draft</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="TREATED">Treated</option>
+          </select>
+          <div *ngIf="form.get('status')?.invalid && form.get('status')?.touched" class="text-danger">
+            Status is required.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button [disabled]="!form.valid" class="btn btn-primary w-100" type="submit" value="onSubmit()">Add</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button class="go-back-btn" (click)="goBack()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="none" d="M0 0h24v24H0V0z" />
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+    </svg>
+</button>
+</div>
