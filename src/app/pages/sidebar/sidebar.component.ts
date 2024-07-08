@@ -10,6 +10,6 @@ export class SidebarComponent {
   navLinks = [
     { path: '/dashboard', title: 'Home', class: '', icon: 'bi-house-door' },
     { path: '/tabletickets', title: 'Tickets', class: '', icon: 'bi-ticket' },
-    { path: '/tableuser', title: 'Utilisateurs', class: '', icon: 'bi-person' },
+    { path: '/tableuser', title: 'Users', class: '', icon: 'bi-person' },
   ];
 }

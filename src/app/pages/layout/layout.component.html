@@ -1,7 +1,19 @@
 <div class="main-container">
   <app-sidebar></app-sidebar>
   <div class="main-content">
+    <!-- <div class="top-nav">
+      <div class="user-info">
+        <span class="text-white">{{ loggedUser?.email }}</span>
+        <span class="current-page-name">{{ currentPageName }}</span>
+        <button class="logout-btn" type="button" (click)="onLogoff()">
+          Log Out
+        </button>
+      </div>
+    </div> -->
+
     <div class="top-nav">
+      <div class="current-page-name">
+        {{ currentPageName }}      </div>
       <div class="user-info">
         <span class="text-white">{{ loggedUser?.email }}</span>
         <button class="logout-btn" type="button" (click)="onLogoff()">
@@ -9,6 +21,7 @@
         </button>
       </div>
     </div>
+    
     <router-outlet></router-outlet>
   </div>
 </div>

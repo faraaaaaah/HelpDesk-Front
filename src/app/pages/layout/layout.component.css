@@ -34,22 +34,34 @@ app-sidebar {
 .user-info {
     display: flex;
     align-items: center;
+    margin-left: auto; /* Pushes .user-info to the right */
+    margin-right: 20px;  
 }
 
 .logout-btn {
     background: none;
     border: none;
     /* Change to a contrasting color, like black */
-    font-size: 14px;
+    font-size: 15px;
     /* Increase the font size */
     padding: 10px 20px;
     /* Adjust padding for better spacing */
-    margin-left: 15px;
+    margin-left: 20px;
     cursor: pointer;
     z-index: 999;
     /* Add a higher z-index */
 }
-
+.current-page-name {
+    background: none;
+    border: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 999;
+    color:rgb(59, 59, 59);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+ 
 
 .logout-btn i {
     font-size: 1.5rem;

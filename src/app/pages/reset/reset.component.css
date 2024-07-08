@@ -36,10 +36,6 @@
 
 .container h1 {
     font-size: 30px;
-    /* Increased font size */
-    margin-bottom: 50px;
-    /* Increased margin-bottom to create space below the title */
-    margin-top: 10px;
     /* Additional margin-top to move the title down */
 }
 
@@ -55,9 +51,9 @@
 
 .container .form-group label {
     display: block;
-    margin-bottom: 25px;
-    font-size: 18px;
-    /* Decreased margin-bottom to create space between label and input */
+    margin-bottom: 18px;
+    margin-top: 20px;
+    font-size: 17px;
 }
 
 .container .form-group input {
@@ -68,6 +64,7 @@
     border-radius: 8px;
     border: 1px solid #ccc;
     outline: none;
+    
 }
 
 .container button {
@@ -81,9 +78,7 @@
     border-radius: 8px;
     cursor: pointer;
     margin-bottom: 30px;
-    margin-top: 30px;
-    margin-right: 20px;
-    /* Increased margin-top to create space above the button */
+    margin-right: 20px;    /* Increased margin-top to create space above the button */
     align-self: flex-end;
     /* Align button to the right */
 }
@@ -111,5 +106,6 @@
     /* Adjust color as needed */
 }
 .text-danger{
-    margin-top:18px;
+    margin-top:14px;
+    font-size: 15px;
 }

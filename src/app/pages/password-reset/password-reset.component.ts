@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PasswordResetService } from '../../password-reset.service';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-password-reset',
@@ -7,20 +11,48 @@ import { Router } from '@angular/router';
   styleUrl: './password-reset.component.css'
 })
 export class PasswordResetComponent {
-  passwordResetObj: PasswordResetModel = new PasswordResetModel();
+  passwordResetForm: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private fb: FormBuilder,
+    private passwordResetService: PasswordResetService) {this.passwordResetForm = this.fb.group({
+      email: ['', {
+        validators: [Validators.required, Validators.email],
+        asyncValidators: [this.emailExistsValidator.bind(this)],
+        updateOn: 'blur'
+      }],
+    }); }
 
-  sendVerificationEmail(): void {
-    if (this.passwordResetObj.email) {
-      // Implement logic to send verification email
-      console.log('Verification email sent to:', this.passwordResetObj.email);
-      // You can also navigate to a confirmation page after sending the email
-      this.router.navigateByUrl('/verification-sent');
-    } else {
-      alert('Please enter a valid email address.');
+    emailExistsValidator(control: AbstractControl) {
+      const email = control.value;
+      return this.passwordResetService.checkEmailExists(email).pipe(
+        map(exists => {
+          return exists ? null : { emailDoesNotExist: true };
+        }),
+        catchError(() => of({ emailDoesNotExist: true })) // Handle HTTP errors
+      );
     }
-  }
+
+    sendVerificationEmail() {
+      if (this.passwordResetForm.valid) {
+        const email = this.passwordResetForm.get('email')?.value;
+    
+        this.passwordResetService.sendPasswordResetEmail(email).subscribe(
+          // Success handler
+          response => {console.log('Verification email sent to:', email);
+            //this.router.navigateByUrl('/verify');
+            this.router.navigate(['/verify'], { queryParams: { email: email } });
+            
+          },
+          // Error handler
+          error => {
+            console.error('Error sending verification email:', error);
+        alert(error);
+          }
+        );
+      } 
+    }
+    
+    
   goBack() {
     this.router.navigate(['/login']); // Navigate back to the login page
   }
@@ -33,3 +65,6 @@ export class PasswordResetModel {
     this.email = ""
   }
 }
+  
+
+

@@ -71,7 +71,11 @@ addUser(data: any): Observable<any> {
 getUsers(): Observable<User[]>{
   return this.http.get<User[]>(`${this.url}/users`);
 }
-
+sendPasswordResetEmail(email: string): Observable<any> {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+  const body = `email=${email}`;
+  return this.http.post(`${this.url}/forgot-password`, body, { headers });
+}
 // Get User by Id - Read
 getUserById(id: string | number): Observable<User> {
   return this.http.get<User>(`${this.url}/users/${id}`);

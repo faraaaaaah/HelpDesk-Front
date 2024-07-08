@@ -13,6 +13,8 @@ import { ModifieruserComponent } from './pages/modifieruser/modifieruser.compone
 import { AdduserComponent } from './pages/adduser/adduser.component';
 import { InfoticketComponent } from './pages/infoticket/infoticket.component';
 import { InfouserComponent } from './pages/infouser/infouser.component';
+import { ResetComponent } from './pages/reset/reset.component';
+import { VerifyComponent } from './pages/verify/verify.component';
 
 
 export const routes: Routes = [
@@ -28,6 +30,14 @@ export const routes: Routes = [
   {
     path: 'password-reset',
     component: PasswordResetComponent
+  },
+  {
+    path: 'reset',
+    component: ResetComponent
+  },
+  {
+    path: 'verify',
+    component: VerifyComponent
   },
   {
     path: 'sidebar',
@@ -63,15 +73,18 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        data: { pageTitle: 'Home' }
       },
       {
         path: 'tabletickets',
-        component: TableticketsComponent
+        component: TableticketsComponent,
+        data: { pageTitle: 'Tickets' }
       },
       {
         path: 'tableuser',
-        component: TableuserComponent
+        component: TableuserComponent,
+        data: { pageTitle: 'Users' }
       }
     ]
   }
