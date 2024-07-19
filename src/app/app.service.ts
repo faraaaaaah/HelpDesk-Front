@@ -90,6 +90,12 @@ updateUser(id?: number, user?: any): Observable<any>{
 deleteUser(id: number): Observable<void> {
   return this.http.delete<void>(`${this.url}/users/${id}`);
 }
+getTicketPercentages(): Observable<any> {
+  return this.http.get<any>(`${this.url}/tickets/percentages`);
+}
+getMonthlyAverages(year: number): Observable<any> {
+  return this.http.get<any>(`${this.url}/tickets/average/${year}`);
+}
 
 // registerUser(user: SignUpModel) {
 //   //return this.http.post(this.url, user);

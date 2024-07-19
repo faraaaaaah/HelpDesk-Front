@@ -24,7 +24,7 @@ export class ResetComponent implements OnInit {
   ) {
     this.resetPasswordForm = this.fb.group({
       email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
-      newPassword: ['', [Validators.required, Validators.minLength(6), this.newPasswordValidator()]]
+      newPassword: ['', [Validators.required, Validators.minLength(6), this.newPasswordValidator(),this.passwordComplexityValidator()]]
     });
   }
 
@@ -57,7 +57,22 @@ export class ResetComponent implements OnInit {
       }
     );
   }
+  passwordComplexityValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (!value) {
+        return null; // Return null if the control value is empty
+      }
 
+      const hasLetters = /[a-zA-Z]/.test(value);
+      const hasNumbers = /\d/.test(value);
+      const hasSpecialChars = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+
+      const passwordValid = hasLetters && (hasNumbers || hasSpecialChars);
+
+      return !passwordValid ? { passwordComplexity: true } : null;
+    };
+  }
   newPasswordValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (!this.resetPasswordForm) {

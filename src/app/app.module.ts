@@ -14,7 +14,7 @@ import { ModifierticketComponent } from './pages/modifierticket/modifierticket.c
 import { AddticketComponent } from './pages/addticket/addticket.component';
 import { AdduserComponent } from './pages/adduser/adduser.component';
 import { ModifieruserComponent } from './pages/modifieruser/modifieruser.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoticketComponent } from './pages/infoticket/infoticket.component';
 import { InfouserComponent } from './pages/infouser/infouser.component';
@@ -22,34 +22,26 @@ import { ResetComponent } from './pages/reset/reset.component';
 import { VerifyComponent } from './pages/verify/verify.component';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    LayoutComponent,
-    DashboardComponent,
-    PasswordResetComponent,
-    SidebarComponent,
-    TableticketsComponent,
-    TableuserComponent,
-    AddticketComponent,
-    AdduserComponent,
-    ModifieruserComponent,
-    ModifierticketComponent,
-    InfoticketComponent,
-    InfouserComponent,
-    ResetComponent,
-    VerifyComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LoginComponent,
+        LayoutComponent,
+        DashboardComponent,
+        PasswordResetComponent,
+        SidebarComponent,
+        TableticketsComponent,
+        TableuserComponent,
+        AddticketComponent,
+        AdduserComponent,
+        ModifieruserComponent,
+        ModifierticketComponent,
+        InfoticketComponent,
+        InfouserComponent,
+        ResetComponent,
+        VerifyComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

@@ -14,6 +14,8 @@ export class TableticketsComponent implements OnInit {
   tickets: any[] | undefined
   users: User[] = [];
   selectedTicket: Ticket | undefined; 
+  ticketPercentages: any = {};
+
   
   url: string = "http://localhost:8081";
 
@@ -22,7 +24,17 @@ export class TableticketsComponent implements OnInit {
   ngOnInit(): void {
     this.loadTickets();
     this.loadUsers();
+    this.service.getTicketPercentages().subscribe(
+      (data) => {
+        this.ticketPercentages = data;
+        console.log('Ticket Percentages:', this.ticketPercentages);
+      },
+      (error) => {
+        console.error('Error fetching ticket percentages:', error);
+      }
+    );
   }
+  
   loadUsers(): void {
     this.service.getUsers().subscribe(
       (users: User[]) => {
